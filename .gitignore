@@ -1,0 +1,15 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Local dependency/build output
+node_modules/
+dist/
+build/
+web-ext-artifacts/
+
+# Chrome extension packages and signing keys
+*.crx
+*.pem
+*.zip

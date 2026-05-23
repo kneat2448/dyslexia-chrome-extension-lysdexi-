@@ -1,0 +1,182 @@
+.dx-reader-font,
+.dx-reader-font *:not(code):not(pre):not(kbd):not(samp):not(input):not(textarea):not(select):not(button) {
+  font-family: 'DXOpenDyslexic', 'Comic Sans MS', Arial, sans-serif !important;
+}
+
+.dx-word {
+  border-radius: 3px;
+  transition: background-color 0.12s ease, box-shadow 0.12s ease;
+}
+
+.dx-word:hover {
+  background: rgba(53, 184, 170, 0.14);
+  box-shadow: 0 0 0 2px rgba(53, 184, 170, 0.10);
+}
+
+.dx-reader-ruler {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: -200px;
+  height: 48px;
+  pointer-events: none;
+  z-index: 2147483645;
+  background: rgba(95, 185, 173, 0.13);
+  border-top: 1px solid rgba(63, 148, 138, 0.28);
+  border-bottom: 1px solid rgba(63, 148, 138, 0.28);
+  box-shadow: 0 0 0 9999px rgba(255, 255, 255, 0.03);
+  transition: top 0.05s linear, height 0.12s ease;
+}
+
+.dx-reader-toolbar {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2147483646;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  max-width: min(320px, calc(100vw - 36px));
+  padding: 8px;
+  border: 1px solid rgba(223, 211, 189, 0.95);
+  border-radius: 8px;
+  background: #fbf6ec;
+  color: #2c2a22;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.16);
+  font-family: 'DXOpenDyslexic', 'Comic Sans MS', Arial, sans-serif;
+  cursor: grab;
+  user-select: none;
+  touch-action: none;
+}
+
+.dx-reader-toolbar[hidden] {
+  display: none !important;
+}
+
+.dx-reader-toolbar-word {
+  min-width: 52px;
+  max-width: 210px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #756f5f;
+  font-size: 13px;
+}
+
+.dx-reader-toolbar.dragging {
+  cursor: grabbing;
+}
+
+.dx-reader-toolbar button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 6px;
+  color: #ffffff;
+  background: #5fb9ad;
+  cursor: pointer;
+  font: inherit;
+}
+
+.dx-reader-toolbar button:hover {
+  background: #3f948a;
+}
+
+.dx-reader-toolbar button[aria-pressed='true'] {
+  background: #3f948a;
+  box-shadow: inset 0 0 0 2px rgba(255, 250, 240, 0.55);
+}
+
+.dx-reader-mode {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483644;
+  overflow: auto;
+  background: #f4eddf;
+  color: #2c2a22;
+  font-family: 'DXOpenDyslexic', 'Comic Sans MS', Arial, sans-serif;
+}
+
+.dx-reader-mode-shell {
+  width: min(860px, calc(100vw - 32px));
+  margin: 24px auto 80px;
+}
+
+.dx-reader-mode-header {
+  position: sticky;
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 14px 0;
+  background: #f4eddf;
+  border-bottom: 1px solid rgba(223, 211, 189, 0.95);
+}
+
+.dx-reader-mode-header strong,
+.dx-reader-mode-header span {
+  display: block;
+}
+
+.dx-reader-mode-header span {
+  margin-top: 2px;
+  color: #756f5f;
+  font-size: 13px;
+}
+
+.dx-reader-mode-header button {
+  min-height: 36px;
+  border: 0;
+  border-radius: 8px;
+  padding: 0 14px;
+  color: #fffaf0;
+  background: #5fb9ad;
+  font: inherit;
+  cursor: pointer;
+}
+
+.dx-reader-mode-content {
+  padding: 22px 0;
+  font-size: 20px;
+  line-height: 1.85;
+  letter-spacing: 0.03em;
+}
+
+.dx-reader-mode-content p {
+  margin: 0 0 1.25em;
+}
+
+.dx-reader-toolbar svg {
+  width: 19px;
+  height: 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dx-reader-split-popup {
+  position: fixed;
+  z-index: 2147483647;
+  max-width: min(300px, calc(100vw - 24px));
+  padding: 8px 11px;
+  border: 1px solid rgba(223, 211, 189, 0.95);
+  border-radius: 8px;
+  background: #fbf6ec;
+  color: #2c2a22;
+  box-shadow: 0 10px 26px rgba(44, 42, 34, 0.15);
+  font-family: 'DXOpenDyslexic', 'Comic Sans MS', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.35;
+  pointer-events: none;
+  white-space: nowrap;
+}
+
+.dx-reader-split-popup[hidden] {
+  display: none !important;
+}

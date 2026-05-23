@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lysdexi</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <main class="popup">
+    <header class="topbar">
+      <div class="brand">
+        <img src="assets/logo.png" alt="" aria-hidden="true">
+        <div>
+          <h1>lysdexi</h1>
+          <p>private reading support</p>
+        </div>
+      </div>
+      <label class="switch" title="Enable on this target">
+        <input id="enabledToggle" type="checkbox">
+        <span></span>
+      </label>
+    </header>
+
+    <section class="group">
+      <label class="field">
+        <span>Activation</span>
+        <select id="activationScope">
+          <option value="current-tab">Current tab</option>
+          <option value="all-tabs">All tabs</option>
+          <option value="manual-per-site">Manual per site</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Controls</span>
+        <select id="uiMode">
+          <option value="popup-and-floating-toolbar">Popup and toolbar</option>
+          <option value="popup-only">Popup only</option>
+          <option value="floating-toolbar-only">Floating toolbar only</option>
+        </select>
+      </label>
+
+      <label class="field">
+        <span>Profile</span>
+        <select id="profileSelect">
+          <option value="custom">Custom</option>
+          <option value="homework">Homework</option>
+          <option value="research">Research</option>
+          <option value="exam">Exam focus</option>
+          <option value="night">Night reading</option>
+          <option value="focus">Focus mode</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="group toggles">
+      <label class="switch-row">
+        <span>OpenDyslexic font</span>
+        <input id="fontToggle" type="checkbox">
+        <span class="switch-track"></span>
+      </label>
+      <label class="switch-row">
+        <span>Reading ruler</span>
+        <input id="rulerToggle" type="checkbox">
+        <span class="switch-track"></span>
+      </label>
+      <label class="switch-row">
+        <span>Split words on hover</span>
+        <input id="splitToggle" type="checkbox">
+        <span class="switch-track"></span>
+      </label>
+      <label class="switch-row">
+        <span>Speaker button</span>
+        <input id="speakerToggle" type="checkbox">
+        <span class="switch-track"></span>
+      </label>
+      <label class="switch-row">
+        <span>Clean reader mode</span>
+        <input id="readerModeToggle" type="checkbox">
+        <span class="switch-track"></span>
+      </label>
+    </section>
+
+    <section class="group">
+      <label class="range-row">
+        <span>Ruler height</span>
+        <output id="rulerHeightValue">48px</output>
+      </label>
+      <input id="rulerHeight" type="range" min="20" max="120" step="2">
+
+      <label class="color-row">
+        <span>Ruler color</span>
+        <input id="rulerColor" type="color" value="#5fb9ad">
+      </label>
+    </section>
+
+    <section class="group two">
+      <label class="field">
+        <span>Speech rate</span>
+        <input id="speechRate" type="number" min="0.5" max="1.8" step="0.1">
+      </label>
+      <label class="field">
+        <span>Pitch</span>
+        <input id="speechPitch" type="number" min="0.5" max="2" step="0.1">
+      </label>
+    </section>
+
+    <section class="group actions">
+      <button id="reportIssueBtn" type="button">Report this site</button>
+      <button id="resetToolbarBtn" type="button">Reset toolbar</button>
+    </section>
+
+    <p class="note" id="statusNote">Offline. Settings stay on this device.</p>
+  </main>
+  <script src="popup.js"></script>
+</body>
+</html>
