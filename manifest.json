@@ -1,9 +1,11 @@
 {
   "manifest_version": 3,
   "name": "lysdexi",
-  "description": "Offline dyslexia reading support for students: profiles, reader mode, OpenDyslexic, ruler, word splitting, and speech.",
+  "short_name": "lysdexi",
+  "description": "Offline dyslexia reading support: OpenDyslexic font, reading ruler, syllable splitting, clean reader mode and text-to-speech.",
   "version": "1.0.0",
-  "permissions": ["activeTab", "storage", "tabs", "scripting"],
+  "minimum_chrome_version": "105",
+  "permissions": ["storage", "scripting"],
   "host_permissions": ["<all_urls>"],
   "icons": {
     "16": "assets/icons/icon-16.png",
@@ -58,15 +60,15 @@
         "content/syllables.js",
         "content/speech.js",
         "content/article-detector.js",
+        "content/ui-styles.js",
         "content/content.js"
       ],
-      "run_at": "document_idle",
-      "all_frames": true
+      "run_at": "document_idle"
     }
   ],
   "web_accessible_resources": [
     {
-      "resources": ["assets/fonts/*.ttf", "assets/logo.png"],
+      "resources": ["assets/fonts/*.ttf"],
       "matches": ["<all_urls>"]
     }
   ]
