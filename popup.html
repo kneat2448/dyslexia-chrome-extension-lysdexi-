@@ -16,9 +16,12 @@
           <p>private reading support</p>
         </div>
       </div>
-      <label class="switch" title="Enable on this target">
-        <input id="enabledToggle" type="checkbox">
-        <span></span>
+      <label class="master">
+        <span id="enabledLabel" class="master-label">On for this tab</span>
+        <span class="switch">
+          <input id="enabledToggle" type="checkbox" role="switch">
+          <span></span>
+        </span>
       </label>
     </header>
 
@@ -35,9 +38,8 @@
       <label class="field">
         <span>Controls</span>
         <select id="uiMode">
-          <option value="popup-and-floating-toolbar">Popup and toolbar</option>
+          <option value="popup-and-floating-toolbar">Popup + toolbar</option>
           <option value="popup-only">Popup only</option>
-          <option value="floating-toolbar-only">Floating toolbar only</option>
         </select>
       </label>
 
@@ -57,27 +59,27 @@
     <section class="group toggles">
       <label class="switch-row">
         <span>OpenDyslexic font</span>
-        <input id="fontToggle" type="checkbox">
+        <input id="fontToggle" type="checkbox" role="switch">
         <span class="switch-track"></span>
       </label>
       <label class="switch-row">
         <span>Reading ruler</span>
-        <input id="rulerToggle" type="checkbox">
+        <input id="rulerToggle" type="checkbox" role="switch">
         <span class="switch-track"></span>
       </label>
       <label class="switch-row">
         <span>Split words on hover</span>
-        <input id="splitToggle" type="checkbox">
+        <input id="splitToggle" type="checkbox" role="switch">
         <span class="switch-track"></span>
       </label>
       <label class="switch-row">
         <span>Speaker button</span>
-        <input id="speakerToggle" type="checkbox">
+        <input id="speakerToggle" type="checkbox" role="switch">
         <span class="switch-track"></span>
       </label>
       <label class="switch-row">
         <span>Clean reader mode</span>
-        <input id="readerModeToggle" type="checkbox">
+        <input id="readerModeToggle" type="checkbox" role="switch">
         <span class="switch-track"></span>
       </label>
     </section>
@@ -111,8 +113,9 @@
       <button id="resetToolbarBtn" type="button">Reset toolbar</button>
     </section>
 
-    <p class="note" id="statusNote">Offline. Settings stay on this device.</p>
+    <p class="note" id="statusNote" role="status">Works offline. Nothing you read leaves your browser.</p>
   </main>
+  <script src="shared/settings.js"></script>
   <script src="popup.js"></script>
 </body>
 </html>

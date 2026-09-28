@@ -52,11 +52,11 @@ window.DyslexiaArticleDetector = (() => {
     '[aria-hidden="true"]',
     '[hidden]',
     '[contenteditable="true"]',
-    '.dx-reader-toolbar',
-    '.dx-reader-split-popup',
-    '.dx-reader-ruler',
-    '.dx-reader-mode'
+    'lysdexi-ui'
   ].join(',');
+
+  // Each candidate costs a layout read, so cap how many are inspected on very large pages.
+  const MAX_COMPLEX_CANDIDATES = 1500;
 
   function findContainers() {
     const direct = CANDIDATE_SELECTORS
@@ -87,8 +87,8 @@ window.DyslexiaArticleDetector = (() => {
   }
 
   function findComplexTextBlocks() {
-    const blocks = COMPLEX_TEXT_SELECTORS
-      .flatMap(selector => [...document.querySelectorAll(selector)])
+    const blocks = [...document.querySelectorAll(COMPLEX_TEXT_SELECTORS.join(','))]
+      .slice(0, MAX_COMPLEX_CANDIDATES)
       .filter(isComplexReadableBlock)
       .sort((a, b) => scoreBlock(b) - scoreBlock(a));
 
@@ -110,7 +110,7 @@ window.DyslexiaArticleDetector = (() => {
 
   function compactComplexBlocks(nodes) {
     const picked = [];
-    for (const node of [...new Set(nodes)]) {
+    for (const node of nodes) {
       if (picked.some(existing => existing.contains(node))) continue;
       if (picked.some(existing => node.contains(existing) && wordCount(node.innerText) > 180)) continue;
       picked.push(node);
@@ -139,7 +139,8 @@ window.DyslexiaArticleDetector = (() => {
   }
 
   function wordCount(text) {
-    return (text.match(/\b[\p{L}\p{N}'-]+\b/gu) || []).length;
+    // \b is ASCII-only even with the u flag, which made non-Latin pages count as zero words.
+    return (text.match(/[\p{L}\p{N}][\p{L}\p{M}\p{N}'’-]*/gu) || []).length;
   }
 
   return { findContainers };

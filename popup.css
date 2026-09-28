@@ -4,7 +4,7 @@
   --accent: #5fb9ad;
   --accent-deep: #3f948a;
   --ink: #2c2a22;
-  --muted: #756f5f;
+  --muted: #6b6556;
   --panel: #f4eddf;
   --panel-soft: #fbf6ec;
   --panel-strong: #fffaf0;
@@ -242,12 +242,8 @@ input[type='color'] {
   flex: 0 0 auto;
 }
 
-.switch.small {
-  width: 44px;
-  height: 24px;
-}
-
 .switch input {
+  position: absolute;
   opacity: 0;
   width: 0;
   height: 0;
@@ -275,11 +271,6 @@ input[type='color'] {
   transition: 0.18s ease;
 }
 
-.switch.small span::before {
-  width: 18px;
-  height: 18px;
-}
-
 .switch input:checked + span {
   background: var(--accent);
 }
@@ -288,13 +279,37 @@ input[type='color'] {
   transform: translateX(20px);
 }
 
-.switch.small input:checked + span::before {
-  transform: translateX(20px);
-}
-
 .note {
   color: var(--muted);
   font-size: 0.74rem;
   line-height: 1.4;
   padding-top: 4px;
+}
+
+.master {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.master-label {
+  color: var(--muted);
+  font-size: 0.68rem;
+  white-space: nowrap;
+}
+
+/* The real checkboxes are visually hidden, so show keyboard focus on the drawn switch instead. */
+.switch input:focus-visible + span,
+.switch-row input:focus-visible + .switch-track,
+select:focus-visible,
+input:focus-visible,
+button:focus-visible {
+  outline: 3px solid var(--accent-deep);
+  outline-offset: 2px;
+}
+
+.switch input:disabled + span {
+  opacity: 0.45;
+  cursor: not-allowed;
 }
