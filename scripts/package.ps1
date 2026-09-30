@@ -10,10 +10,12 @@ $out = Join-Path $dist "lysdexi-$version.zip"
 New-Item -ItemType Directory -Force $dist | Out-Null
 if (Test-Path $out) { Remove-Item $out }
 
-# tar.exe (bsdtar, bundled with Windows 10+) writes forward-slash zip paths, which the Web Store requires.
+# Windows' bundled bsdtar writes forward-slash zip paths, which the Web Store requires. Call it by full path:
+# Git for Windows puts GNU tar on PATH, which can't write zips and treats "C:" as a remote host.
+$tar = Join-Path $env:SystemRoot 'System32\tar.exe'
 Push-Location $root
 try {
-  tar.exe -a -c -f $out manifest.json popup.html popup.css popup.js background content shared assets/icons assets/fonts assets/logo.png
+  & $tar -a -c -f $out manifest.json popup.html popup.css popup.js background content shared assets/icons assets/fonts assets/logo.png
   if ($LASTEXITCODE -ne 0) { throw "tar failed with exit code $LASTEXITCODE" }
 } finally {
   Pop-Location

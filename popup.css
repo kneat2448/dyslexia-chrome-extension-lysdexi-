@@ -116,7 +116,7 @@ p {
 
 select,
 input[type='number'] {
-  width: 158px;
+  width: 176px;
   min-height: 36px;
   border: 1px solid var(--line);
   border-radius: 8px;
